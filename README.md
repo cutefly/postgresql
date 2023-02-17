@@ -26,7 +26,7 @@ docker compose down -v
 docker exec -it postgres bash
 
 # postgres DB 접속
-:/# psql -h localhost -u postgres
+:/# psql -h localhost -U postgres
 
 # 일반 유저 생성
 postgres=# CREATE USER kpcuser PASSWORD 'kpcard' SUPERUSER;
@@ -45,4 +45,13 @@ postgres=# select * from pg_database;
 ```sh
 http://localhost:5480/
 chris@kpcard.co.kr / password
+```
+
+## Monitoring
+
+```sh
+# grafana
+http://localhost:3000/
+
+postgresql database dashboard template : ID 9628
 ```
