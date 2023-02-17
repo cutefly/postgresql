@@ -1,0 +1,38 @@
+version: "3"
+services:
+  db:
+    image: postgres:15.2
+    container_name: postgres
+    restart: "no"
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "password"
+    volumes:
+      - data:/var/lib/postgresql/data
+    networks:
+      - network
+
+  pgadmin:
+    image: dpage/pgadmin4:6.20
+    container_name: pgadmin4
+    restart: "no"
+    ports:
+      - "5480:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: chris@kpcard.co.kr
+      PGADMIN_DEFAULT_PASSWORD: password
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    networks:
+      - network
+
+volumes:
+  data:
+  pgadmin:
+
+
+networks:
+  network:
+    driver: bridge
