@@ -1,2 +1,2 @@
-postgres/data
-pgadmin/*
+volumes/postgres/data
+volumes/pgadmin/*
