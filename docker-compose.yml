@@ -10,7 +10,7 @@ services:
       POSTGRES_USER: "postgres"
       POSTGRES_PASSWORD: "password"
     volumes:
-      - data:/var/lib/postgresql/data
+      - ./postgres/data:/var/lib/postgresql/data
     networks:
       - network
 
@@ -24,7 +24,7 @@ services:
       PGADMIN_DEFAULT_EMAIL: chris@kpcard.co.kr
       PGADMIN_DEFAULT_PASSWORD: password
     volumes:
-      - pgadmin:/var/lib/pgadmin
+      - ./pgadmin:/var/lib/pgadmin
     networks:
       - network
 
@@ -55,7 +55,6 @@ services:
       DATA_SOURCE_NAME: "postgresql://postgres:password@postgres:5432/postgres?sslmode=disable"
     networks:
       - network
-
 
 volumes:
   data:

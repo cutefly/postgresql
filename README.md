@@ -28,9 +28,17 @@ docker exec -it postgres bash
 # postgres DB 접속
 :/# psql -h localhost -U postgres
 
-# 일반 유저 생성
+# 일반 유저 생성 및 데이터베이스 생성
 postgres=# CREATE USER kpcuser PASSWORD 'kpcard' SUPERUSER;
+# database, schema 생성
 postgres=# CREATE DATABASE kpcdb OWNER kpcuser;
+
+# 사용자 전환
+postgres=# \c kpcdb kpcuser
+
+# 스키마 생성(on kpcdb)
+kpcdb=> create schema palrago authorization kpcuser;
+kpcdb=> create schema mobilepop authorization kpcuser;
 
 # 사용자 조회 쿼리
 postgres=# select * from pg_user;
@@ -38,6 +46,8 @@ postgres=# select * from pg_database;
 
 # 일반유저 접속
 :/# psql -h localhost -U kpcuser -W kpcdb
+
+
 ```
 
 ## pgAdmin
