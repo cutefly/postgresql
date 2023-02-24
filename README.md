@@ -3,6 +3,11 @@
 ## install on docker
 
 ```sh
+$ chmod 777 volumes/postgres
+$ chmod 777 volumes/pgadmin
+```
+
+```sh
 # 생성
 docker compose up -d
 
